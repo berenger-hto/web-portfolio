@@ -1,4 +1,16 @@
-import * as THREE from 'three'
+import { 
+    Scene, 
+    FogExp2, 
+    PerspectiveCamera, 
+    WebGLRenderer, 
+    Curve, 
+    Vector3, 
+    TubeGeometry, 
+    MeshBasicMaterial, 
+    BackSide, 
+    Mesh, 
+    Clock 
+} from 'three'
 import Lenis from 'lenis'
 
 new Lenis({
@@ -8,18 +20,18 @@ new Lenis({
 })
 
 const canvas = document.querySelector('#webgl-canvas') as HTMLCanvasElement
-const scene = new THREE.Scene()
-scene.fog = new THREE.FogExp2(0x0a0a0a, 0.02)
+const scene = new Scene()
+scene.fog = new FogExp2(0x0a0a0a, 0.02)
 
 const sizes = {
     width: window.innerWidth,
     height: window.innerHeight,
 }
 
-const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000)
+const camera = new PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000)
 scene.add(camera)
 
-const renderer = new THREE.WebGLRenderer({
+const renderer = new WebGLRenderer({
     canvas: canvas,
     alpha: true,
     antialias: true
@@ -29,12 +41,12 @@ renderer.setSize(sizes.width, sizes.height)
 renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2))
 renderer.setClearColor(0x080808, 1)
 
-class CustomTunnelCurve extends THREE.Curve<THREE.Vector3> {
+class CustomTunnelCurve extends Curve<Vector3> {
     constructor() {
         super()
     }
 
-    getPoint(t: number, optionalTarget = new THREE.Vector3()) {
+    getPoint(t: number, optionalTarget = new Vector3()) {
         t *= Math.PI * 2
         const x = Math.sin(t) * 100
         const z = Math.cos(t) * 100
@@ -45,28 +57,28 @@ class CustomTunnelCurve extends THREE.Curve<THREE.Vector3> {
 
 const path = new CustomTunnelCurve()
 
-const tubeGeometry = new THREE.TubeGeometry(path, 250, 8, 6, true)
-const tubeMaterial = new THREE.MeshBasicMaterial({
+const tubeGeometry = new TubeGeometry(path, 150, 8, 4, true)
+const tubeMaterial = new MeshBasicMaterial({
     color: 0x555555,
     wireframe: true,
-    side: THREE.BackSide,
+    side: BackSide,
     transparent: true,
     opacity: 0.6
 })
 
-const tubeMesh = new THREE.Mesh(tubeGeometry, tubeMaterial)
+const tubeMesh = new Mesh(tubeGeometry, tubeMaterial)
 scene.add(tubeMesh)
 
-const outerTubeGeometry = new THREE.TubeGeometry(path, 250, 10, 6, true)
-const outerTubeMaterial = new THREE.MeshBasicMaterial({
+const outerTubeGeometry = new TubeGeometry(path, 150, 10, 4, true)
+const outerTubeMaterial = new MeshBasicMaterial({
     color: 0x333333,
     wireframe: true,
-    side: THREE.BackSide,
+    side: BackSide,
     transparent: true,
     opacity: 0.2
 })
 
-const outerTubeMesh = new THREE.Mesh(outerTubeGeometry, outerTubeMaterial)
+const outerTubeMesh = new Mesh(outerTubeGeometry, outerTubeMaterial)
 outerTubeMesh.rotation.z = Math.PI / 6
 scene.add(outerTubeMesh)
 
@@ -97,9 +109,12 @@ window.addEventListener('touchmove', (event) => {
     }
 })
 
-const clock = new THREE.Clock()
+const clock = new Clock()
 let previousTime = 0
 let tunnelPosition = 0
+
+const camPos = new Vector3()
+const camLookAt = new Vector3()
 
 const tick = () => {
     const elapsedTime = clock.getElapsedTime()
@@ -111,8 +126,8 @@ const tick = () => {
         tunnelPosition -= 1
     }
 
-    const camPos = path.getPoint(tunnelPosition)
-    const camLookAt = path.getPoint((tunnelPosition + 0.02) % 1)
+    path.getPoint(tunnelPosition, camPos)
+    path.getPoint((tunnelPosition + 0.02) % 1, camLookAt)
 
     camera.position.copy(camPos)
     camera.lookAt(camLookAt)
