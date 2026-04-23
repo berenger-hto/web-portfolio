@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Portfolio de Bérenger, développeur Fullstack spécialisé dans la création d'applications web et mobiles modernes, performantes et sécurisées.">
+    <meta name="keywords"
+        content="Bérenger, développeur, fullstack, web, mobile, ClipboardX, React, Three.js, portfolio">
+    <meta name="author" content="Bérenger">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://berenger.vercel.app/">
+    <meta property="og:title" content="Bérenger - Développeur Web Fullstack">
+    <meta property="og:description"
+        content="Découvrez les réalisations de Bérenger, développeur Fullstack et créateur de ClipboardX.">
+    <meta property="og:image" content="/icon.png">
+
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://berenger.vercel.app/">
+    <meta property="twitter:title" content="Bérenger - Développeur Web Fullstack">
+    <meta property="twitter:description"
+        content="Découvrez les réalisations de Bérenger, développeur Fullstack et créateur de ClipboardX.">
+    <meta property="twitter:image" content="/icon.png">
+
+    <title>Bérenger - Développeur Web Fullstack</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles.css" />
+</head>
+
+<body>
+    <canvas id="webgl-canvas" aria-hidden="true"></canvas>
+    <main class="fixed top-0 left-0 w-full h-screen">
+        <div class="flex flex-col mx-20 my-22">
+            <header>
+                <h1 class="text-4xl uppercase font-bold">Bérenger</h1>
+                <h2 class="text-normal uppercase bg-white text-black mt-1 w-116 px-2 py-1">Développeur fullstack &
+                    créateur de ClipboardX</h2>
+            </header>
+            <div class="mt-10">
+                <p class="text-sm opacity-75">Fondateur / Développeur fullstack et de <a
+                        href="https://clipboardx.vercel.app" target="_blank"
+                        class="opacity-50 hover:opacity-100 duration-200"
+                        aria-label="Visiter le site de ClipboardX">@ClipboardX</a></p>
+                <p class="text-sm opacity-75">Une solution pour gérer convenablement votre presse-papier</p>
+            </div>
+            <div class="mt-10">
+                <p class="text-sm opacity-75">Quelques réaisations</p>
+                <ul class="mt-2 space-y-2">
+                    <li>
+                        <a href="https://clipboardx.vercel.app" target="_blank" rel="noopener" class="block">
+                            <span class="opacity-60">ClipboardX</span> - <span class="opacity-85">Application pour gérer
+                                son presse-papier.</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://quiz-min.onrender.com" target="_blank" rel="noopener" class="block">
+                            <span class="opacity-60">Quiz Min</span> - <span class="opacity-85">Application interactive
+                                pour tester sa culture générale.</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://numeric-clock.onrender.com" target="_blank" rel="noopener" class="block">
+                            <span class="opacity-60">Numeric Clock</span> - <span class="opacity-85">Horloge mondiale
+                                avec mode plein écran pour le travail.</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/berenger-hto" target="_blank" rel="noopener" class="block">
+                            <span class="opacity-60">Pharmacie</span> - <span class="opacity-85">UI mobile pour un
+                                magasin de produits de santé.</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="mt-10 flex flex-wrap gap-2">
+                <span class="bg-white text-black px-2 py-1 text-sm rounded-lg">ergonomie</span>
+                <span class="bg-white text-black px-2 py-1 text-sm rounded-lg">performances</span>
+                <span class="bg-white text-black px-2 py-1 text-sm rounded-lg">sécurité</span>
+                <span class="bg-white text-black px-2 py-1 text-sm rounded-lg">automatisation</span>
+                <span class="bg-white text-black px-2 py-1 text-sm rounded-lg">interactivité</span>
+                <span class="bg-white text-black px-2 py-1 text-sm rounded-lg">sémantique</span>
+            </div>
+            <div class="mt-10">
+                <p class="text-sm opacity-75">Vous pouvez consulter mon profil github <a
+                        href="https://github.com/berenger-hto" target="_blank"
+                        class="opacity-50 hover:opacity-100 duration-200"
+                        aria-label="Voir mon profil GitHub">@berenger-hto</a> pour voir plus de projets,
+                    <br> ou me contacter via mon adresse gmail <a href="mailto:llsberenger@gmail.com"
+                        class="opacity-50 hover:opacity-100 duration-200" target="_blank"
+                        aria-label="M'envoyer un email">llsberenger@gmail.com</a> <br> ou via <a
+                        href="https://wa.me/22990817575" target="_blank"
+                        class="opacity-50 hover:opacity-100 duration-200"
+                        aria-label="Me contacter sur WhatsApp">WhatsApp</a>.
+                </p>
+            </div>
+        </div>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>

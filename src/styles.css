@@ -1,0 +1,33 @@
+@import "tailwindcss";
+
+* {
+    font-family: "Inter", sans-serif;
+    user-select: none;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+}
+
+ul li {
+    position: relative;
+    left: 16px;
+
+    &::before {
+        position: absolute;
+        content: '';
+        height: 6px;
+        width: 6px;
+        background-color: #fff;
+        left: -14px;
+        top: 50%;
+        transform: translateY(-50%);
+        opacity: .5;
+        transition: all .2s;
+    }
+
+    &:hover::before {
+        opacity: 1;
+    }
+}
